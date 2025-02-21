@@ -16,7 +16,7 @@ int main(){
 	int a;
 	printf("Combien de prénoms souhaitez-vous stocker?\n");
 	if(scanf("%d",&a)!=1){
-		printf("erreur nb prénoms"\n);
+		printf("erreur nb prénoms\n");
 		exit(6);
 	}
 	//allocation de mémoire
@@ -28,7 +28,9 @@ int main(){
 	//pour chaque prénom
 	for(int i=0; i<a; i++){
 		//définir aléatoirement la taille du prénom (8-16 car.)	
-		int L=rand()%9+8;
+		int L;
+		printf("Rentrez la taille du prénom: ");
+		scanf("%d",&L);
 		nikoli[i]=malloc((L+1)*sizeof(char));
 		if(nikoli[i]==NULL){
 			printf("Erreur malloc prénom\n");
@@ -36,10 +38,13 @@ int main(){
 		}
 		//*
 		//scanf
-		printf("entrez un prénom de %d lettres:",L);
+		printf("entrez un prénom de %d lettres: ",L);
 		if(scanf("%s",nikoli[i])!=1){
 			printf("erreur scanf\n");
 			exit(3);
+		}
+		if(nikoli[i][0]<='z'&& nikoli[i][0]>='a'){
+			nikoli[i][0]-=32;
 		}
 		//*/
 		/*
